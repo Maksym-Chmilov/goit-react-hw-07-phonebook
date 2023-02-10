@@ -1,4 +1,4 @@
-import { ContactsList, ContactsBtn, ContactsItem } from './ContactList.styled';
+import { ContactsList, ContactsBtn, ContactsItem, RequestTitle } from './ContactList.styled';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchContact, deleteContact } from 'redux/contactsOperations';
@@ -6,6 +6,8 @@ import { fetchContact, deleteContact } from 'redux/contactsOperations';
 export const ContactList = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contacts.items);
+  const loading = useSelector(state => state.contacts.isLoading);
+  const error = useSelector(state => state.contacts.error);
 
   useEffect(() => {
     dispatch(fetchContact());
@@ -28,6 +30,7 @@ export const ContactList = () => {
             </ContactsBtn>
           </ContactsItem>
         ))}
+        {loading && !error && <RequestTitle>Request being processed</RequestTitle>}
       </ContactsList>
     </>
   );

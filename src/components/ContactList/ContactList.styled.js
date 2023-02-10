@@ -38,3 +38,12 @@ export const ContactsItem = styled.li`
   font-size: large;
   justify-content: space-between;
 `;
+
+export const RequestTitle = styled.h2`
+font-weight: 700;
+font-size: 28px;
+line-height: 1.2;
+letter-spacing: 0.03em;
+text-transform: uppercase;
+color: orangered;
+`
